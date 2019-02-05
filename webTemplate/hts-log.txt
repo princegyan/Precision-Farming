@@ -1,0 +1,22 @@
+HTTrack3.49-2+htsswf+htsjava launched on Mon, 26 Nov 2018 14:07:51 at http://qbgrow.com/magen/iot-admin/app/index.html +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" http://qbgrow.com/magen/iot-admin/app/index.html -O1 "C:\My Web Sites\Iot" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+14:07:52	Warning: 	Note: due to qbgrow.com remote robots.txt rules, links beginning with these path will be forbidden: /cgi-bin/ (see in the options to disable this)
+14:09:32	Warning: 	Retry after error -5 (Unable to get server's address: No such host is known. ) at link vueghost.com/magen-iot-admin/img/magen-iot-admin-social.png (from qbgrow.com/magen/iot-admin/app/index.html)
+14:11:56	Error: 	"Forbidden" (403) at link https://scontent.fdxb1-1.fna.fbcdn.net/v/t31.0-8/19238218_1901779180090186_1774631387012709393_o.jpg?_nc_cat=0&oh=32d032958d602955490d875c7ce46ffd&oe=5B5B0B53 (from qbgrow.com/magen/iot-admin/app/index.html)
+14:11:56	Warning: 	Retry after error -5 (Unable to get server's address: unknown error) at link vueghost.com/magen-iot-admin/img/magen-iot-admin-social.png (from qbgrow.com/magen/iot-admin/app/index.html)
+14:12:28	Error: 	"Not Found" (404) at link qbgrow.com/magen/iot-admin/app/page-inbox.html (from qbgrow.com/magen/iot-admin/app/mailbox.html)
+14:12:38	Error: 	"Unable to get server's address: unknown error" (-5) after 2 retries at link vueghost.com/magen-iot-admin/img/magen-iot-admin-social.png (from qbgrow.com/magen/iot-admin/app/index.html)
+14:12:38	Error: 	"Not Found" (404) at link qbgrow.com/magen/iot-admin/lib/images/sort_both.png (from qbgrow.com/magen/iot-admin/lib/datatables/jquery.dataTables.css)
+14:12:38	Error: 	"Not Found" (404) at link qbgrow.com/magen/iot-admin/lib/images/sort_asc.png (from qbgrow.com/magen/iot-admin/lib/datatables/jquery.dataTables.css)
+14:12:38	Error: 	"Not Found" (404) at link qbgrow.com/magen/iot-admin/lib/images/sort_desc.png (from qbgrow.com/magen/iot-admin/lib/datatables/jquery.dataTables.css)
+14:12:38	Error: 	"Not Found" (404) at link qbgrow.com/magen/iot-admin/lib/images/sort_asc_disabled.png (from qbgrow.com/magen/iot-admin/lib/datatables/jquery.dataTables.css)
+14:12:38	Error: 	"Not Found" (404) at link qbgrow.com/magen/iot-admin/lib/images/sort_desc_disabled.png (from qbgrow.com/magen/iot-admin/lib/datatables/jquery.dataTables.css)
+
+HTTrack Website Copier/3.49-2 mirror complete in 4 minutes 47 seconds : 127 links scanned, 116 files written (8134060 bytes overall) [7436209 bytes received at 25910 bytes/sec], 907523 bytes transferred using HTTP compression in 43 files, ratio 16%, 2.8 requests per connection
+(8 errors, 3 warnings, 0 messages)
