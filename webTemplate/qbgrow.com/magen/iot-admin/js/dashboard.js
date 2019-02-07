@@ -62,33 +62,12 @@ $(function(){
   });
   rs2.render();
 
-
-
   var rs3 = new Rickshaw.Graph({
     element: document.querySelector('#rs3'),
-    renderer: 'line',
+    renderer: 'area',
     stroke: true,
     series: [{
       data: [
-        { x: 0, y: 9 },
-        { x: 1, y: 7 },
-        { x: 2, y: 10 },
-        { x: 3, y: 12 },
-        { x: 4, y: 16 },
-        { x: 5, y: 10 },
-        { x: 6, y: 9 },
-        { x: 7, y: 7 },
-        { x: 8, y: 6 },
-        { x: 9, y: 8 },
-        { x: 10, y: 9 },
-        { x: 11, y: 10 },
-        { x: 12, y: 7 },
-        { x: 13, y: 10 }
-      ],
-      color: '#017afd',
-      stroke: 'rgba(0,0,0,0.15)'
-    },
-      { data: [
         { x: 0, y: 9 },
         { x: 1, y: 7 },
         { x: 2, y: 20 },
@@ -104,9 +83,11 @@ $(function(){
         { x: 12, y: 8 },
         { x: 13, y: 10 }
       ],
-      color: '#f1116a'}]
+      color: '#40e0d0',
+    }]
   });
   rs3.render();
+
 
     var rs4 = new Rickshaw.Graph({
     element: document.querySelector('#rs4'),
@@ -129,10 +110,38 @@ $(function(){
         { x: 12, y: 7 },
         { x: 13, y: 10 }
       ],
-      color: '#f1116a',
+      color: '#ADD8E6',
     }]
   });
   rs4.render();
+
+  var rs5 = new Rickshaw.Graph({
+    element: document.querySelector('#rs5'),
+    renderer: 'area',
+    stroke: true,
+    series: [{
+      data: [
+        { x: 0, y: 9 },
+        { x: 1, y: 7 },
+        { x: 2, y: 30 },
+        { x: 3, y: 12 },
+        { x: 4, y: 16 },
+        { x: 5, y: 10 },
+        { x: 6, y: 9 },
+        { x: 7, y: 7 },
+        { x: 8, y: 6 },
+        { x: 9, y: 8 },
+        { x: 10, y: 9 },
+        { x: 11, y: 10 },
+        { x: 12, y: 7 },
+        { x: 13, y: 10 }
+      ],
+      color: 'red',
+    }]
+  });
+  rs5.render();
+
+
 
 
 
