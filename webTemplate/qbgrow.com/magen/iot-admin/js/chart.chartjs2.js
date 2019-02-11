@@ -8,9 +8,9 @@ $(function(){
       labels: ['00', '01', '02', '03', '04', '05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23'],
       datasets: [{
         data: [12, 39, 20, 10, 25, 18,25,23,11,1,36,30,12,23,6,24,15,32,12, 39, 20, 10, 25, 18,],
-        borderColor: '#017afd',
+        borderColor: 'orange',
         label: '# Votes ',
-        backgroundColor: '#e8f6f9'
+        backgroundColor: '#FFF9D4'
 
       }]
     },
@@ -48,9 +48,9 @@ $(function(){
       labels: ['Sun','Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'],
       datasets: [{
         data: [18,23,11,1,24,12, 39, 20, 10, 25, 18],
-        borderColor: '#017afd',
+        borderColor: 'orange',
         label: '# Votes',
-        backgroundColor: '#e8f6f9'
+        backgroundColor: '#FFF9D4'
 
       }]
     },
@@ -88,9 +88,9 @@ $(function(){
       labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
       datasets: [{
         data: [12, 39, 20, 10, 25, 18],
-        borderColor: '#017afd',
+        borderColor: 'orange',
         label: '# Votes',
-        backgroundColor: '#e8f6f9'        
+        backgroundColor: '#FFF9D4'        
       }]
     },
     options: {
@@ -128,8 +128,8 @@ $(function(){
       datasets: [{
         label: '# of Votes',
         data: [12, 39, 20, 10, 25, 18,6,24,15,32,12,20,],
-        borderColor: '#017afd',
-        backgroundColor: '#e8f6f9'        
+        borderColor: 'orange',
+        backgroundColor: '#FFF9D4'        
       }]
     },
     options: {
@@ -168,7 +168,7 @@ $(function(){
       datasets: [{
         label: '# of Votes',
         data: [12, 39, 20, 10, 25, 18],
-        borderColor: '#324463',
+        borderColor: 'orange',
         borderWidth: 1,
         fill: false
       }]
@@ -210,7 +210,7 @@ $(function(){
         fill: false
       },{
         data: [30, 50, 28, 23, 25, 28],
-        borderColor: '#5B93D3',
+        borderColor: 'orange',
         borderWidth: 1,
         fill: false
       }]
