@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   
-<!-- Mirrored from qbgrow.com/magen/iot-admin/app/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Nov 2018 14:07:52 GMT -->
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -31,7 +30,7 @@
     <meta name="author" content="vueghost">
 
 
-    <title>Soil Moisture</title>
+    <title>Atmospheric Temperature</title>
 
     <!-- vendor css -->
     <link href="../lib/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -160,60 +159,33 @@
       <nav class="breadcrumb">
         <a class="breadcrumb-item" href="index.html">PrecisionFarming</a>
         <span class="breadcrumb-item active">Dashboard</span>
-        <a class="breadcrumb-item" href="soil-moisture-1H.html">1H</a>
-        <a class="breadcrumb-item" href="soil-moisture-24H.html">24H</a>
-        <a class="breadcrumb-item" href="soil-moisture-1W.html">1W</a>
-        <a class="breadcrumb-item" href="soil-moisture-1M.html">1M</a>
-        <a class="breadcrumb-item" href="soil-moisture-1Y.html">1Y</a>
+        <a class="breadcrumb-item" href="atmospheric-temperature-1H.html">1H</a>
+        <a class="breadcrumb-item" href="atmospheric-temperature-24H.html">24H</a>
+        <a class="breadcrumb-item" href="atmospheric-temperature-1W.html">1W</a>
+        <a class="breadcrumb-item" href="atmospheric-temperature-1M.html">1M</a>
+        <a class="breadcrumb-item" href="atmospheric-temperature-1Y.html">1Y</a>
       </nav>
     </div><!-- kt-breadcrumb -->
 
     <!-- ##### MAIN PANEL ##### -->
     <div class="kt-mainpanel">
       <div class="kt-pagetitle">
-        <h5>Soil Moisture Panel</h5>
+        <h5>Atmospheric Temperature Panel</h5>
       </div><!-- kt-pagetitle -->
 
       <div class="kt-pagebody">
 
         <div class="row row-sm">
-          <div class="col-xl-6">
+          <div class="col-xl-12">
             <div class="card pd-20 pd-sm-40">
-              <h6 class="card-body-title">Daily Chart</h6>
+              <h6 class="card-body-title">Yearly Chart</h6>
               <p class="mg-b-20 mg-sm-b-30"></p>
-              <canvas id="chart1" height="300"></canvas>
-              <h6 style="text-align: center;" >Hours</h6>
-            </div><!-- card -->
-          </div><!-- col-6 -->
-          <div class="col-xl-6 mg-t-25 mg-xl-t-0">
-            <div class="card pd-20 pd-sm-40">
-              <h6 class="card-body-title">Weekly Chart</h6>
-              <p class="mg-b-20 mg-sm-b-30"></p>
-              <canvas id="chart2" height="300"></canvas>
-              <h6 style="text-align: center;" >Days</h6>
-            </div><!-- card -->
-          </div><!-- col-6 -->
-        </div><!-- row -->
-
-
-        <div class="row row-sm mg-t-50">
-          <div class="col-xl-6">
-            <div class="card pd-20 pd-sm-40">
-              <h6 class="card-body-title">Monthly Chart</h6>
-              <p class="mg-b-20 mg-sm-b-30"></p>
-              <canvas id="chart3" height="300"></canvas>
-              <h6 style="text-align: center;" >Weeks</h6>              
-            </div><!-- card -->
-          </div><!-- col-6 -->
-          <div class="col-xl-6 mg-t-25 mg-xl-t-0">
-            <div class="card pd-20 pd-sm-40">
-              <h6 class="card-body-title">Yearly  Chart</h6>
-              <p class="mg-b-20 mg-sm-b-30"></p>
-              <canvas id="chart4" height="300"></canvas>
+              <canvas id="chartat1Y" height="300"></canvas>
               <h6 style="text-align: center;" >Months</h6>
             </div><!-- card -->
           </div><!-- col-6 -->
         </div><!-- row -->
+
 
 
 
@@ -243,7 +215,7 @@
     <script src="../lib/chart.js/Chart.js"></script>
 
     <script src="../js/magen-iot-admin.js"></script>
-    <script src="../js/chart.chartjs.js"></script>
+    <script src="../js/chart.chartjs3at-1Y.js"></script>
   </body>
 
 <!-- Mirrored from qbgrow.com/magen/iot-admin/app/chart-chartjs.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Nov 2018 14:11:27 GMT -->
