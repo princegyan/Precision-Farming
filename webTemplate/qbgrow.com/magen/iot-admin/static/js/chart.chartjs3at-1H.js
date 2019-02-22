@@ -5,9 +5,9 @@ $(function(){
   var myChart1 = new Chart(ctx1, {
     type: 'line',
     data: {
-      labels: b,
+      labels: time,
       datasets: [{
-        data: a,
+        data: a_temp,
         borderColor: 'red',
         label: '# Votes ',
         backgroundColor: '#FFDFDF'

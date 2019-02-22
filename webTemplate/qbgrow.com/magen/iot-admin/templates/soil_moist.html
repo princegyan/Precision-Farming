@@ -1,36 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   
+<!-- Mirrored from qbgrow.com/magen/iot-admin/app/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Nov 2018 14:07:52 GMT -->
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-
-    <!-- Twitter -->
-    <meta name="twitter:site" content="@vueghost">
-    <meta name="twitter:creator" content="@vueghost">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="magen-iot-admin">
-    <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
-    <meta name="twitter:image" content="../../../../vueghost.com/magen-iot-admin/img/magen-iot-admin-social.png">
-
-    <!-- Facebook -->
-    <meta property="og:url" content="http://vueghost.com/magen-iot-admin">
-    <meta property="og:title" content="Bracket">
-    <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
-
-    <meta property="og:image" content="../../../../vueghost.com/magen-iot-admin/img/magen-iot-admin-social.png">
-    <meta property="og:image:secure_url" content="../../../../vueghost.com/magen-iot-admin/img/magen-iot-admin-social.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="600">
-
-    <!-- Meta -->
-    <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
-    <meta name="author" content="vueghost">
-
-
-    <title>Atmospheric Temperature</title>
+   
+   
+    <title>Soil Moisture</title>
 
     <!-- vendor css -->
     <link href="../static/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -40,15 +15,14 @@
 
     <!-- magen-iot-admin CSS -->
     <link rel="stylesheet" href="../static/css/magen-iot-admin.css">
-
     <script type="text/javascript">
-    var a = []
-    a = {{temp}}
-    </script>
-    <script type="text/javascript">
-    var b = []
-    b = {{time|safe}}
-    </script>
+        var s_moist = []
+        s_moist = {{moist}}
+        </script>
+        <script type="text/javascript">
+        var time = []
+        time = {{time|safe}}
+        </script>
   </head>
 
   <body>
@@ -166,20 +140,20 @@
     </div><!-- kt-headpanel -->
     <div class="kt-breadcrumb">
       <nav class="breadcrumb">
-        <a class="breadcrumb-item" href="index.html">PrecisionFarming</a>
+        <a class="breadcrumb-item" href="/">PrecisionFarming</a>
         <span class="breadcrumb-item active">Dashboard</span>
-        <a class="breadcrumb-item" href="atmospheric-temperature-1H.html">1H</a>
-        <a class="breadcrumb-item" href="/atmt/24h">24H</a>
-        <a class="breadcrumb-item" href="atmospheric-temperature-1W.html">1W</a>
-        <a class="breadcrumb-item" href="atmospheric-temperature-1M.html">1M</a>
-        <a class="breadcrumb-item" href="atmospheric-temperature-1Y.html">1Y</a>
+        <a class="breadcrumb-item" href="/soilmoist/1h">1H</a>
+        <a class="breadcrumb-item" href="/soilmoist/24h">24H</a>
+        <a class="breadcrumb-item" href="/soilmoist/1w">1W</a>
+        <a class="breadcrumb-item" href="/soilmoist/1m">1M</a>
+        <a class="breadcrumb-item" href="/soilmoist/1y">1Y</a>
       </nav>
     </div><!-- kt-breadcrumb -->
 
     <!-- ##### MAIN PANEL ##### -->
     <div class="kt-mainpanel">
       <div class="kt-pagetitle">
-        <h5>Atmospheric Temperature Panel</h5>
+        <h5>Soil Moisture Panel</h5>
       </div><!-- kt-pagetitle -->
 
       <div class="kt-pagebody">
@@ -187,9 +161,9 @@
         <div class="row row-sm">
           <div class="col-xl-12">
             <div class="card pd-20 pd-sm-40">
-              <h6 class="card-body-title">5 Hour Chart</h6>
+              <h6 class="card-body-title">1 Hour Chart</h6>
               <p class="mg-b-20 mg-sm-b-30"></p>
-              <canvas id="chartat1H" height="300"></canvas>
+              <canvas id="chartsm1H" height="300"></canvas>
               <h6 style="text-align: center;" >Minutes</h6>
             </div><!-- card -->
           </div><!-- col-6 -->
@@ -210,7 +184,7 @@
     <script src="../static/lib/chart.js/Chart.js"></script>
 
     <script src="../static/js/magen-iot-admin.js"></script>
-    <script src="../static/js/chart.chartjs3at-1H.js"></script>
+    <script src="../static/js/chart.chartjssm-1H.js"></script>
   </body>
 
 <!-- Mirrored from qbgrow.com/magen/iot-admin/app/chart-chartjs.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Nov 2018 14:11:27 GMT -->
