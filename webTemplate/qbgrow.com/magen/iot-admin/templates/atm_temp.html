@@ -5,8 +5,13 @@
    
     <title>Atmospheric Temperature</title>
 
+
+    <meta http-equiv="refresh" content="60">
+
+    
+
     <!-- vendor css -->
-    <link href="../static/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+    
     <link href="../static/lib/Ionicons/css/ionicons.css" rel="stylesheet">
     <link href="../static/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
     <link href="../static/lib/rickshaw/rickshaw.min.css" rel="stylesheet">
@@ -160,10 +165,10 @@
         <div class="row row-sm">
           <div class="col-xl-12">
             <div class="card pd-20 pd-sm-40">
-              <h6 class="card-body-title">5 Hour Chart</h6>
+              <h6 class="card-body-title">{{name}} Chart</h6>
               <p class="mg-b-20 mg-sm-b-30"></p>
               <canvas id="chartat1H" height="300"></canvas>
-              <h6 style="text-align: center;" >Minutes</h6>
+              <h6 style="text-align: center;" >{{label}}</h6>
             </div><!-- card -->
           </div><!-- col-6 -->
         </div><!-- row -->
@@ -180,7 +185,7 @@
     <script src="../static/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
     <script src="../static/lib/moment/moment.js"></script>
     <script src="../static/lib/highlightjs/highlight.pack.js"></script>
-    <script src="../static/lib/chart.js/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
     <script src="../static/js/magen-iot-admin.js"></script>
     <script src="../static/js/chart.chartjs3at-1H.js"></script>
