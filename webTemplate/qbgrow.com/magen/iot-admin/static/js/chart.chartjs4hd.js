@@ -23,14 +23,19 @@ $(function(){
         scales: {
           yAxes: [{
             ticks: {
-              beginAtZero:true,
+              //beginAtZero:true,
               fontSize: 10,
-              max: 80
+	      stepValue:0.5,
+              //max: 80
             }, gridLines:{
               display:false}
           }],
           xAxes: [{
             ticks: {
+
+	    callback: function(item, index){
+	    	return index % 10 == 0 ? item : null;
+		},
               beginAtZero:true,
               fontSize: 11
             }, gridLines:{

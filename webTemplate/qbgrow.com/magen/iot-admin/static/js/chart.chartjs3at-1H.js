@@ -9,7 +9,7 @@ $(function(){
       datasets: [{
         data: a_temp,
         borderColor: 'red',
-        label: '# Votes ',
+        label: 'Temperature',
         backgroundColor: '#FFDFDF'
 
       }]
@@ -24,14 +24,20 @@ $(function(){
       scales: {
         yAxes: [{
           ticks: {
-            beginAtZero:true,
+            
             fontSize: 10,
-            max: 80
+	    steps: 0.5,
+	    stepValue: 0.1,
+           
           }, gridLines:{
             display:false}
         }],
         xAxes: [{
           ticks: {
+
+	    callback: function(item, index){
+	    	return index % 15 == 0 ? item : null;
+		},
             beginAtZero:true,
             fontSize: 11
           }, gridLines:{

@@ -6,6 +6,7 @@
    
    
     <title>Humidity</title>
+    <meta http-equiv="refresh" content="60">
 
     <!-- vendor css -->
     <link href="../static/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -153,7 +154,7 @@
     <!-- ##### MAIN PANEL ##### -->
     <div class="kt-mainpanel">
       <div class="kt-pagetitle">
-        <h5>Soil Moisture Panel</h5>
+        <h5>Humidity Panel</h5>
       </div><!-- kt-pagetitle -->
 
       <div class="kt-pagebody">
@@ -161,10 +162,10 @@
         <div class="row row-sm">
           <div class="col-xl-12">
             <div class="card pd-20 pd-sm-40">
-              <h6 class="card-body-title">1 Hour Chart</h6>
+              <h6 class="card-body-title">{{name}} Chart</h6>
               <p class="mg-b-20 mg-sm-b-30"></p>
               <canvas id="chartst24H" height="300"></canvas>
-              <h6 style="text-align: center;" >Minutes</h6>
+              <h6 style="text-align: center;" >{{label}}</h6>
             </div><!-- card -->
           </div><!-- col-6 -->
         </div><!-- row -->
