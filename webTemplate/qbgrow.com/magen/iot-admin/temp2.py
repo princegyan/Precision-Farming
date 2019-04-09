@@ -19,6 +19,10 @@ while(counter ==1 ):
         f.write(str(localtime)+ '\t')
         f.write(str(cels)+'\n')
         f.close()
+<<<<<<< HEAD
         time.sleep(60)
+=======
+        time.sleep(10)
+>>>>>>> 17238407395f85472e9bf997d1904c86efa14906
 	
 

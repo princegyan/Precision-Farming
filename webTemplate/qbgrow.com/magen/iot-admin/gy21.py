@@ -17,6 +17,10 @@ while(counter ==1 ):
         print('Humidity is %f%%'%(humidity))
         f.write(str(localtime)+ '\t')
         f.write(str(humidity)+'\n')
+<<<<<<< HEAD
         time.sleep(60)
+=======
+        time.sleep(1)
+>>>>>>> 17238407395f85472e9bf997d1904c86efa14906
 
 

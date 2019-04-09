@@ -29,7 +29,11 @@ def loop(ds18b20):
             print ("Soil temperature : %f C" % read(ds18b20)[0])
             f.write(str(localtime)+ '\t')
             f.write(str(read(ds18b20)[0])+ '\n')
+<<<<<<< HEAD
             time.sleep(60)
+=======
+            time.sleep(10)
+>>>>>>> 17238407395f85472e9bf997d1904c86efa14906
             
             
           # print ("Current temperature : %0.3f F" % read(ds18b20)[1])

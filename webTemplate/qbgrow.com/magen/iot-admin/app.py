@@ -48,7 +48,11 @@ def atmtemp(x):
     elif x == '24h':
         name = '24 HOUR'
         label = 'Hours'
+<<<<<<< HEAD
         with open('./readings/atmp24h.embs') as file:
+=======
+        with open('./reading.embs') as file:
+>>>>>>> 17238407395f85472e9bf997d1904c86efa14906
             del time[:]
             del temp[:]
             d = file.readlines()
@@ -61,7 +65,11 @@ def atmtemp(x):
     elif x == '1w':
         name = '1 WEEK'
         label = 'Days'
+<<<<<<< HEAD
         with open('./readings/atmp1w.embs') as file:
+=======
+        with open('./reaading2.embs'    ) as file:
+>>>>>>> 17238407395f85472e9bf997d1904c86efa14906
             del time[:]
             del temp[:]
             d = file.readlines()
@@ -74,7 +82,11 @@ def atmtemp(x):
     elif x == '1m':
         name = '1 MONTH'
         label = 'Weeks'
+<<<<<<< HEAD
         with open('./reaading2.embs') as file:
+=======
+        with open('./reaading2.embs'    ) as file:
+>>>>>>> 17238407395f85472e9bf997d1904c86efa14906
             del time[:]
             del temp[:]
             d = file.readlines()
@@ -87,7 +99,11 @@ def atmtemp(x):
     elif x == '1y':
         name = '1 YEAR'
         label = 'Months'
+<<<<<<< HEAD
         with open('./reaading2.embs') as file:
+=======
+        with open('./reaading2.embs'    ) as file:
+>>>>>>> 17238407395f85472e9bf997d1904c86efa14906
             del time[:]
             del temp[:]
             d = file.readlines()
@@ -120,7 +136,11 @@ def soiltemp(x):
     elif x == '24h':
         name = '24 HOUR'
         label = 'Hours'
+<<<<<<< HEAD
         with open('./readings/stmp24h.embs') as file:
+=======
+        with open('./reading.embs') as file:
+>>>>>>> 17238407395f85472e9bf997d1904c86efa14906
             del time[:]
             del temp[:]
             d = file.readlines()
@@ -133,7 +153,11 @@ def soiltemp(x):
     elif x == '1w':
         name = '1 WEEK'
         label = 'Days'
+<<<<<<< HEAD
         with open('./readings/stmp1w.embs') as file:
+=======
+        with open('./reaading2.embs') as file:
+>>>>>>> 17238407395f85472e9bf997d1904c86efa14906
             del time[:]
             del temp[:]
             d = file.readlines()
@@ -250,7 +274,11 @@ def humid(x):
     elif x == '24h':
         name = '24 Hour'
         label = 'Hours'
+<<<<<<< HEAD
         with open('./readings/humidity24h.embs') as file:
+=======
+        with open('./reading.embs') as file:
+>>>>>>> 17238407395f85472e9bf997d1904c86efa14906
             del time[:]
             del temp[:]
             d = file.readlines()
@@ -263,7 +291,11 @@ def humid(x):
     elif x == '1w':
         name = '1 Week'
         label = 'Days'
+<<<<<<< HEAD
         with open('./readings/humidity1w.embs') as file:
+=======
+        with open('./reaading2.embs') as file:
+>>>>>>> 17238407395f85472e9bf997d1904c86efa14906
             del time[:]
             del temp[:]
             d = file.readlines()
@@ -303,4 +335,8 @@ def humid(x):
 
 
 if __name__ == '__main__':
+<<<<<<< HEAD
     app.run(debug=True, host='10.10.64.13')
+=======
+    app.run(debug=True,)
+>>>>>>> 17238407395f85472e9bf997d1904c86efa14906
