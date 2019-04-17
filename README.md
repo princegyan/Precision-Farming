@@ -6,9 +6,9 @@ As per the advancement pattern of current agriculture and the prerequisites for 
 
 
 # Sensors in Use
-### 1.[DS18B20 - Soil Temperature]  (https://github.com/princegyan/Precision-Farming/blob/master/webTemplate/qbgrow.com/magen/iot-admin/ds18b20.py) 
+### 1.[DS18B20 - Soil Temperature](https://github.com/princegyan/Precision-Farming/blob/master/webTemplate/qbgrow.com/magen/iot-admin/ds18b20.py) 
 ### 2.[Capacitive Soil Moisture ](https://github.com/princegyan/Precision-Farming/blob/master/webTemplate/qbgrow.com/magen/iot-admin/moisture.py)
-### 3.GY21P - [Humidity](https://github.com/princegyan/Precision-Farming/blob/master/webTemplate/qbgrow.com/magen/iot-admin/gy21.py) & [Temperature ] (https://github.com/princegyan/Precision-Farming/blob/master/webTemplate/qbgrow.com/magen/iot-admin/temp2.py)
+### 3.GY21P - [Humidity](https://github.com/princegyan/Precision-Farming/blob/master/webTemplate/qbgrow.com/magen/iot-admin/gy21.py) & [Temperature ](https://github.com/princegyan/Precision-Farming/blob/master/webTemplate/qbgrow.com/magen/iot-admin/temp2.py)
 ### 4.E201-C - pH sensor [Code Here]()
 ### [Combined Code ](https://github.com/princegyan/Precision-Farming/blob/master/webTemplate/qbgrow.com/magen/iot-admin/combined%20code/combined.py)
 
