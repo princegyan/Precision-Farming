@@ -8,7 +8,7 @@
 
     <title>IoT Agric</title>
 
-    <meta http-equiv="refresh" content="10">
+    <meta http-equiv="refresh" content="30">
 
     <!-- vendor css -->
     <link href="../static/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -157,7 +157,7 @@
                   <div class="card-body pd-b-0">        
                     <img src="../static/img/water.svg" width="60" class="card-icon"/>
                     <h6 class="card-body-title tx-12 tx-spacing-2 mg-b-20">Soil Moisture Sensor</h6>
-                    <h2 class="tx-roboto tx-inverse">{{moisture}}<small>%</small></h2>
+                    <h2 class="tx-roboto tx-inverse">23<small>%</small></h2>
                     <p class="tx-12"><span class="tx-success">2.5%</span> stability from yesterday</p>
                      <a href="index.html"></a>                        
                   </div><!-- card-body -->
@@ -174,7 +174,7 @@
                     <div class="card-body pd-b-0">
                       <img src="../static/img/thermometer.svg" width="60" class="card-icon"/>
                       <h6 class="card-body-title tx-12 tx-spacing-2 mg-b-20">Soil Temperature</h6>
-                      <h2 class="tx-roboto tx-inverse">{{soiltemp}} <small>&#8451</small></h2>
+                      <h2 class="tx-roboto tx-inverse">40 <small>&#8451</small></h2>
                       <p class="tx-12"><span class="tx-success">2.5%</span> change from yesterday</p>
                     </div><!-- card-body -->
                     <div id="rs2" class="ht-50 ht-sm-70 mg-r--1"></div>
@@ -191,7 +191,7 @@
                       <div class="card-body pd-b-0 ">
                         <img src="../static/img/thermometer.svg" width="60" class="card-icon"/>
                         <h6 class="card-body-title tx-12 tx-spacing-2 mg-b-20">Atmospheric Temperature</h6>
-                        <h2 class="tx-lato tx-inverse">{{atmtemp}} <small>&#8451</small></h2>
+                        <h2 class="tx-lato tx-inverse">60 <small>&#8451</small></h2>
                         <p class="tx-12"><span class="tx-success">2.5%</span> change from yesterday</p>
                       </div><!-- card-body -->
                       <div id="rs5" class="ht-50 ht-sm-70 mg-r--1"></div>
@@ -205,7 +205,7 @@
                     <div class="card-body pd-b-0">
                       <img src="http://qbgrow.com/magen/iot-admin/img/rain.svg" width="60" class="card-icon"/>
                       <h6 class="card-body-title tx-12 tx-spacing-2 mg-b-20">Humidity</h6>
-                      <h2 class="tx-roboto tx-inverse">{{humidity}} <small>%</small></h2>
+                      <h2 class="tx-roboto tx-inverse">3 <small>%</small></h2>
                       <p class="tx-12"><span class="tx-success">2.5%</span> change from yesterday</p>
                     </div><!-- card-body -->
                     <div id="rs4" class="ht-50 ht-sm-70 mg-r--1"></div>
@@ -363,7 +363,7 @@
           <div class="col-lg-4">
             <div class="card pd-40 tx-center">
               <div class="d-flex justify-content-center mg-b-30">
-                <img src="https://www.clipartmax.com/png/full/266-2666812_rapsberry-clipart-raspberry-pi-raspberry-pi-logo-svg.png" class="wd-150" alt="" height="200">
+                <img src="../static/img/pi3.png" class="wd-150" alt="" height="200">
               </div>
               <h6 class="tx-md-20 tx-inverse mg-b-20">Raspberry Pi</h6>
               <a href="#" class="btn btn-success btn-block">Connected</a>

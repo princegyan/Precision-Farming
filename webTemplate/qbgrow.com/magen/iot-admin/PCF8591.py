@@ -58,6 +58,8 @@ if __name__ == "__main__":
 	while True:
 		print 'AIN0 = ', read(0)
 		print 'AIN1 = ', read(1)
+		print 'AIN3 = ', read(3)
+		print 'AIN2 = ', read(2)
 		tmp = read(0)
 		tmp = tmp*(255-125)/255+125 # LED won't light up below 125, so convert '0-255' to '125-255'
 		write(tmp)

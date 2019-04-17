@@ -1,6 +1,8 @@
 import smbus
 import time
-
+import sqlite3 as sql
+connection = sql.connect("IoTDatabase.db")
+cur = connection.cursor()
 counter = 1
 while(counter ==1 ):
         bus = smbus.SMBus(1)
@@ -13,14 +15,13 @@ while(counter ==1 ):
 
         humidity = ((data0 * 256 + data1)*125 / 65536.0)-6
         localtime = time.asctime( time.localtime(time.time()) )
-        f = open("humidityCollector.txt","a")
+ #       f = open("humidityCollector.txt","a")
         print('Humidity is %f%%'%(humidity))
-        f.write(str(localtime)+ '\t')
-        f.write(str(humidity)+'\n')
-<<<<<<< HEAD
+        cur.execute('insert into humidity(date, reading) values(?, ?)',(localtime, float(humidity)))
+        connection.commit()
+        connection.close()
+ #       f.write(str(localtime)+ '\t')
+#        f.write(str(humidity)+'\n')
         time.sleep(60)
-=======
-        time.sleep(1)
->>>>>>> 17238407395f85472e9bf997d1904c86efa14906
 
 

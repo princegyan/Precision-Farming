@@ -2,7 +2,7 @@
 #!/usr/bin/env python
 import os
 import time
- 
+import sqlite3 as sql
 def sensor():
     for i in os.listdir('/sys/bus/w1/devices'):
         if i != 'w1_bus_master1':
@@ -22,18 +22,22 @@ def read(ds18b20):
     return celsius, farenheit
  
 def loop(ds18b20):
+    con = sql.connect("IoTDatabase.db")
+    c = con.cursor()
     while True:
         if read(ds18b20) != None:
             localtime = time.asctime( time.localtime(time.time()) )
-            f = open("soilTempCollector.txt","a")
+            #f = open("soilTempCollector.txt","a")
             print ("Soil temperature : %f C" % read(ds18b20)[0])
-            f.write(str(localtime)+ '\t')
-            f.write(str(read(ds18b20)[0])+ '\n')
-<<<<<<< HEAD
+            #f.write(str(localtime)+ '\t')
+            #f.write(str(read(ds18b20)[0])+ '\n')
+            c.execute('insert into soilTemp(date, reading) values(?,?)', (localtime, float(read(ds18b20)[0])))
+            con.commit()
+            con.close()
+
             time.sleep(60)
-=======
-            time.sleep(10)
->>>>>>> 17238407395f85472e9bf997d1904c86efa14906
+
+            #time.sleep(10)
             
             
           # print ("Current temperature : %0.3f F" % read(ds18b20)[1])
