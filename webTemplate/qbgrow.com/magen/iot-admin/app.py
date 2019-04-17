@@ -1,12 +1,28 @@
 from flask import Flask, render_template
 
 
+
 app = Flask(__name__)
 
 
 @app.route('/')
-def index():   
-    return render_template('index.html')   
+def index():
+    with open('./readings/atmp1h.embs') as file:
+        u = file.readlines()[-1]
+        atmtemp = u[8:12]
+    with open('./readings/atmp1h.embs') as file:
+        x = file.readlines()[-1]
+        atmtemp=x[7:12]
+    with open('./readings/humidity1h.embs') as file:
+        x = file.readlines()[-1]
+        humidity=x[7:12]
+    with open('./readings/stmp1h.embs') as file:
+        x = file.readlines()[-1]
+        soiltemp=x[7:12]
+    with open('./readings/stmp1h.embs') as file:
+        x = file.readlines()[-1]
+        moisture=x[7:12]
+        return render_template('index.html',atmtemp=atmtemp, humidity=humidity, soiltemp=soiltemp, moisture=moisture)   
     # return "Hello Boss!  <a href='/logout'>Logout</a>"
 
 time = []
@@ -32,7 +48,7 @@ def atmtemp(x):
     elif x == '24h':
         name = '24 HOUR'
         label = 'Hours'
-        with open('./reading.embs') as file:
+        with open('./readings/atmp24h.embs') as file:
             del time[:]
             del temp[:]
             d = file.readlines()
@@ -45,7 +61,7 @@ def atmtemp(x):
     elif x == '1w':
         name = '1 WEEK'
         label = 'Days'
-        with open('./reaading2.embs'    ) as file:
+        with open('./readings/atmp1w.embs') as file:
             del time[:]
             del temp[:]
             d = file.readlines()
@@ -58,7 +74,7 @@ def atmtemp(x):
     elif x == '1m':
         name = '1 MONTH'
         label = 'Weeks'
-        with open('./reaading2.embs'    ) as file:
+        with open('./reaading2.embs') as file:
             del time[:]
             del temp[:]
             d = file.readlines()
@@ -71,8 +87,9 @@ def atmtemp(x):
     elif x == '1y':
         name = '1 YEAR'
         label = 'Months'
-        with open('./reaading2.embs'    ) as file:
+        with open('./reaading2.embs') as file:
             del time[:]
+            del temp[:]
             d = file.readlines()
             for i in d:
                 e=float(i.split()[1])
@@ -92,6 +109,7 @@ def soiltemp(x):
         label = 'Minutes'
         with open('./readings/stmp1h.embs') as file:
             del time[:]
+            del temp[:]
             d = file.readlines()
             for i in d:
                 e=float(i.split()[1])
@@ -102,8 +120,9 @@ def soiltemp(x):
     elif x == '24h':
         name = '24 HOUR'
         label = 'Hours'
-        with open('./reading.embs') as file:
+        with open('./readings/stmp24h.embs') as file:
             del time[:]
+            del temp[:]
             d = file.readlines()
             for i in d:
                 e=float(i.split()[1])
@@ -114,12 +133,14 @@ def soiltemp(x):
     elif x == '1w':
         name = '1 WEEK'
         label = 'Days'
-        with open('./reaading2.embs') as file:
+        with open('./readings/stmp1w.embs') as file:
             del time[:]
+            del temp[:]
             d = file.readlines()
             for i in d:
                 e=float(i.split()[1])
                 temp.append(e)
+                #print(temp)
                 d=str(i.split()[0])
                 if d not in temp:
                     time.append(d)
@@ -128,6 +149,7 @@ def soiltemp(x):
         label = 'Weeks'
         with open('./reaading2.embs') as file:
             del time[:]
+            del temp[:]
             d = file.readlines()
             for i in d:
                 e=float(i.split()[1])
@@ -140,6 +162,7 @@ def soiltemp(x):
         label = 'Months'
         with open('./reaading2.embs') as file:
             del time[:]
+            del temp[:]
             d = file.readlines()
             for i in d:
                 e=float(i.split()[1])
@@ -154,6 +177,7 @@ def soilmoist(x):
     if x == '1h':
         with open('./reaading2.embs') as file:
             del time[:]
+            del temp[:]
             d = file.readlines()
             for i in d:
                 e=float(i.split()[1])
@@ -164,6 +188,7 @@ def soilmoist(x):
     elif x == '24h':
         with open('./reading.embs') as file:
             del time[:]
+            del temp[:]
             d = file.readlines()
             for i in d:
                 e=float(i.split()[1])
@@ -174,6 +199,7 @@ def soilmoist(x):
     elif x == '1w':
         with open('./reaading2.embs') as file:
             del time[:]
+            del temp[:]
             d = file.readlines()
             for i in d:
                 e=float(i.split()[1])
@@ -184,6 +210,7 @@ def soilmoist(x):
     elif x == '1m':
         with open('./reaading2.embs') as file:
             del time[:]
+            del temp[:]
             d = file.readlines()
             for i in d:
                 e=float(i.split()[1])
@@ -194,6 +221,7 @@ def soilmoist(x):
     elif x == '1y':
         with open('./reaading2.embs') as file:
             del time[:]
+            del temp[:]
             d = file.readlines()
             for i in d:
                 e=float(i.split()[1])
@@ -201,7 +229,7 @@ def soilmoist(x):
                 d=str(i.split()[0])
                 if d not in temp:
                     time.append(d)
-    return render_template('soil_moist.html', moist=moist, time=str(time))
+    return render_template('soil_moist.html', moist=moist, time=str(time), name=name, label=label)
 
 
 @app.route('/humidity/<x>')
@@ -211,6 +239,7 @@ def humid(x):
         label = 'Minutes'
         with open('./readings/humidity1h.embs') as file:
             del time[:]
+            del temp[:]
             d = file.readlines()
             for i in d:
                 e=float(i.split()[1])
@@ -221,8 +250,10 @@ def humid(x):
     elif x == '24h':
         name = '24 Hour'
         label = 'Hours'
-        with open('./reading.embs') as file:
+
+        with open('./readings/humidity24h.embs') as file:
             del time[:]
+            del temp[:]
             d = file.readlines()
             for i in d:
                 e=float(i.split()[1])
@@ -233,8 +264,9 @@ def humid(x):
     elif x == '1w':
         name = '1 Week'
         label = 'Days'
-        with open('./reaading2.embs') as file:
+        with open('./readings/humidity1w.embs') as file:
             del time[:]
+            del temp[:]
             d = file.readlines()
             for i in d:
                 e=float(i.split()[1])
@@ -247,6 +279,7 @@ def humid(x):
         label = 'Weeks'
         with open('./reaading2.embs') as file:
             del time[:]
+            del temp[:]
             d = file.readlines()
             for i in d:
                 e=float(i.split()[1])
@@ -259,6 +292,7 @@ def humid(x):
         label = 'Months'
         with open('./reaading2.embs') as file:
             del time[:]
+            del temp[:]
             d = file.readlines()
             for i in d:
                 e=float(i.split()[1])
@@ -270,4 +304,4 @@ def humid(x):
 
 
 if __name__ == '__main__':
-    app.run(debug=True,)
+    app.run(debug=True, host='10.10.64.13')

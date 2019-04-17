@@ -33,6 +33,9 @@ $(function(){
         }],
         xAxes: [{
           ticks: {
+	    callback: function(item, index){
+	    	return index % 4 == 0 ? item : null;
+		},
             beginAtZero:true,
             fontSize: 11
           }, gridLines:{

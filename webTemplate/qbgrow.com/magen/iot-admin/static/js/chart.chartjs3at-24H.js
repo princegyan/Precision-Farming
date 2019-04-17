@@ -1,43 +1,48 @@
-$(function(){
-  'use strict';
+function tripSpeedsLineGraph() {
+    var gpsData = @Html.Raw(Json.Serialize(Model.gpsData));
 
-  var ctx1 = document.getElementById('chartat24H').getContext('2d');
-  var myChart1 = new Chart(ctx1, {
-    type: 'line',
-    data: {
-      labels: ['00', '01', '02', '03', '04', '05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23'],
-      datasets: [{
-        data: [12, 39, 20, 10, 25, 18,25,23,11,1,36,30,12,23,6,24,15,32,12, 39, 20, 10, 25, 18,],
-        borderColor: 'red',
-        label: '# Votes ',
-        backgroundColor: '#FFDFDF'
+    chartData = []
+    var reqData = $.map(gpsData, function (value, index) {
+         chartData.push([new Date(value.timestamp), value.sp]);
+    });
 
-      }]
-    },
-    options: {
-      legend: {
-        display: false,
-          labels: {
-            display: false
-          }
-      },
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero:true,
-            fontSize: 10,
-            max: 80
-          }, gridLines:{
-            display:false}
-        }],
-        xAxes: [{
-          ticks: {
-            beginAtZero:true,
-            fontSize: 11
-          }, gridLines:{
-            display:false}
+    var chart = Highcharts.chart('tripSpeedsLineChart', {
+        chart: {
+            type: 'spline',
+            zoomType: 'x',
+            panning: true,
+            panKey: 'shift'
+        },
+        title: {
+            text: "Speed during trip"
+        },
+        subtitle: {
+            text: 'Click and drag to zoom in. Hold down shift key to pan.'
+        },
+        xAxis: {
+            type: 'datetime',
+            dateTimeLabelFormats: {
+                day: '%b %H:%M:%S'
+            },
+            title: {
+                text: 'Time of day'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Speed'
+            },
+            min: 0
+        },
+        tooltip: {
+            crosshairs: [true],
+            formatter: function () {
+                return "Datetime: " + moment.utc(moment.unix(this.x/1000)).format("DD/MM-YYYY HH:mm:ss") + "<br> Speed: " + this.y;
+            }
+        },
+        series: [{
+            name: 'Speed Data',
+            data: chartData
         }]
-      }
-    }
-  });
-});
+    });
+}

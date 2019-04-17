@@ -24,18 +24,19 @@ def read(ds18b20):
 def loop(ds18b20):
     con = sql.connect("IoTDatabase.db")
     c = con.cursor()
-    while True:
-        if read(ds18b20) != None:
-            localtime = time.asctime( time.localtime(time.time()) )
+    
+    if read(ds18b20) != None:
+        localtime = time.asctime( time.localtime(time.time()) )
             #f = open("soilTempCollector.txt","a")
-            print ("Soil temperature : %f C" % read(ds18b20)[0])
+        #print ("Soil temperature : %f C" % read(ds18b20)[0])
+    return (read(ds18b20)[0])
             #f.write(str(localtime)+ '\t')
             #f.write(str(read(ds18b20)[0])+ '\n')
-            c.execute('insert into soilTemp(date, reading) values(?,?)', (localtime, float(read(ds18b20)[0])))
-            con.commit()
-            con.close()
+        #c.execute('insert into soilTemp(date, reading) values(?,?)', (localtime, float(read(ds18b20)[0])))
+        #con.commit()
+        #con.close()
 
-            time.sleep(60)
+        #time.sleep(60)
 
             #time.sleep(10)
             
