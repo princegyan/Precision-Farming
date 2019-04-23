@@ -24,19 +24,16 @@ $(function(){
       scales: {
         yAxes: [{
           ticks: {
-<<<<<<< HEAD
             
             fontSize: 10,
 	    steps: 0.5,
 	    stepValue: 0.1,
            
-=======
             //beginAtZero: true,
             fontSize: 10,
 	    steps: 0.5,
 	   // stepValue: 0.5,
             //max: 40
->>>>>>> 17238407395f85472e9bf997d1904c86efa14906
           }, gridLines:{
             display:false}
         }],

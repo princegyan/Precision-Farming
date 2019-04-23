@@ -11,15 +11,20 @@ import sqlite3 as sql
 
 
 def select(table_name, limit):
-    connection = sql.connect("combinedCode/IoTDatabase.db")
-    cursor = connection.cursor()
-    cursor.execute(
-        "select date, reading from( select * from %s order by id desc limit %d) order by id asc;"
-        % (table_name, limit)
-    )
+    try:
+        with sql.connect("combinedCode/IoTDatabase.db") as connection:
+            cursor = connection.cursor()
+            cursor.execute(
+                "select date, reading from( select * from %s order by id desc limit %d) order by id asc;"
+                % (table_name, limit)
+            )
+    except BaseException as e:
+        connection.rollback()
+        print("Reason for failure: ", e)
 
-    return cursor.fetchall()
-    connection.close()
+    finally:
+        return cursor.fetchall()
+        connection.close()
 
 
 if __name__ == "__main__":

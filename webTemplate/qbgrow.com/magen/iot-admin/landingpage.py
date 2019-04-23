@@ -16,14 +16,27 @@ data = []  # This should hold the data from the database
 
 def read():
     del data[:]
-    connection = sql.connect("combinedCode/IoTDatabase.db")
-    cursor = connection.cursor()
-    for i in db_tables:
-        cursor.execute("select reading from %s order by id desc limit 1" % i)
-        data.append(cursor.fetchone())
-    connection.close()
+    # connection = sql.connect("combinedCode/IoTDatabase.db")
+    # cursor = connection.cursor()
+    # for i in db_tables:
+    #     cursor.execute("select reading from %s order by id desc limit 1" % i)
+    #     data.append(cursor.fetchone())
+    # connection.close()
 
-    return data
+    # return data
+
+    try:
+        with sql.connect("combinedCode/IoTDatabase.db") as connection:
+            cursor = connection.cursor()
+            for i in db_tables:
+                cursor.execute("select reading from %s order by id desc limit 1" % i)
+                data.append(cursor.fetchone())
+    except Exception as e:
+        connection.rollback()
+        print("This is the reason", e)
+    finally:
+        return data
+        connection.close()
 
 
 if __name__ == "__main__":

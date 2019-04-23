@@ -20,6 +20,10 @@
   <!-- magen-iot-admin CSS -->
   <link rel="stylesheet" href="../static/css/magen-iot-admin.css">
 
+    <!-- Link for the font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
   <script type="text/javascript">
     var soil_temp = []
     soil_temp = {{ temp }}
@@ -31,6 +35,26 @@
 </head>
 
 <body>
+
+    <!-- Modal -->
+      <div class="modal fade" id="downloadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Select file format to download</h5>
+            </div>
+            <div class="modal-body">
+              <a href="/download/soilTemp/{{name}}">{{name}} data in csv</a><br /> <br>
+              <a href="/download/soilTemp">Entire data in csv</a> <br /> <br /> 
+              <a href="#">Entire data in excel Format</a> <br /> <br />
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+              <!-- <button type="button" class="btn btn-default">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
 
   <!-- ##### SIDEBAR LOGO ##### -->
   <div class="kt-sideleft-header">
@@ -172,7 +196,16 @@
       <div class="row row-sm">
         <div class="col-xl-12">
           <div class="card pd-20 pd-sm-40">
+          <div class="row">
+          <div class="col">
             <h6 class="card-body-title">{{name}} Chart</h6>
+          </div>
+          <div class="col"></div>
+          <div class="col" align='right'>
+              <a href="#" data-toggle="modal" data-target="#downloadModal"><i class="fas fa-download"></i> Download Data</a>
+
+          </div>
+          </div>
             <p class="mg-b-20 mg-sm-b-30"></p>
             <canvas id="chartst1H" height="300"></canvas>
             <h6 style="text-align: center;">{{label}}</h6>
