@@ -3,7 +3,7 @@ import csv
 from generator import generate
 from selection import select
 from landingpage import read
-
+from views.settings import render_settings
 import sqlite3 as sql
 
 
@@ -17,8 +17,8 @@ def index():
         "index.html",
         atmtemp=float(round(results[0][0], 2)),
         humidity=float(round(results[1][0], 2)),
-        soiltemp=float(round(results[2][0], 2)),
-        moisture=float(round(results[3][0], 2)),
+        moisture=float(round(results[2][0], 2)),
+        soiltemp=float(round(results[3][0], 2)),
     )
 
 
@@ -35,7 +35,7 @@ def atmtemp(x):
         label = "Minutes"
         del time[:]
         del temp[:]
-        result = select("atmosphericTemp", 20)
+        result = select("atmosphericTemp", 60)
         for i in result:
             temp.append(float(round(i[1], 2)))  # works for the time
             time.append(str(i[0][11:16]))
@@ -45,7 +45,7 @@ def atmtemp(x):
         label = "Hours"
         del time[:]
         del temp[:]
-        result = select("atmosphericTemp", 60)
+        result = select("atmosphericTemp", 1440)
         for i in result:
             temp.append(float(round(i[1], 2)))  # works for the time
             time.append(str(i[0][11:16]))
@@ -85,228 +85,278 @@ def atmtemp(x):
     )
 
 
+@app.route("/soilmoist/<x>")
+def soilmoist(x):
+    if x == "1h":
+        name = "1 HOUR"
+        label = "Minutes"
+        del time[:]
+        del moist[:]
+        result = select("soilMoisture", 60)
+        for i in result:
+            moist.append(float(round(i[1], 2)))  # works for the time
+            time.append(str(i[0][11:16]))
+
+    elif x == "24h":
+        name = "24 HOUR"
+        label = "Hours"
+        del time[:]
+        del moist[:]
+        result = select("soilMoisture", 1440)
+        for i in result:
+            moist.append(float(round(i[1], 2)))  # works for the time
+            time.append(str(i[0][11:16]))
+
+    elif x == "1w":
+        name = "1 WEEK"
+        label = "Days"
+        del time[:]
+        del temp[:]
+        result = select("soilMoisture", 10080)
+        for i in result:
+            moist.append(float(round(i[1], 2)))
+            time.append(str(i[0][11:16]))
+
+    elif x == "1m":
+        name = "1 MONTH"
+        label = "Weeks"
+        del time[:]
+        del temp[:]
+        result = select("soilMoisture", 10)  # please take a look at this one
+        for i in result:
+            moist.append(float(round(i[1], 2)))
+            time.append(str(i[0][11:16]))
+
+    elif x == "1y":
+        name = "1 YEAR"
+        label = "Months"
+        del time[:]
+        del temp[:]
+        result = select("soilMoisture", 15)  # please take a look at this one
+        for i in result:
+            moist.append(float(round(i[1], 2)))
+            time.append(str(i[0][11:16]))
+
+    return render_template(
+        "soil_moist.html", moist=moist, time=str(time), name=name, label=label
+    )
+
+
 @app.route("/soiltemp/<x>")
 def soiltemp(x):
     if x == "1h":
         name = "1 HOUR"
         label = "Minutes"
-        with open("./readings/stmp1h.embs") as file:
-            del time[:]
-            del temp[:]
-            d = file.readlines()
-            for i in d:
-                e = float(i.split()[1])
-                temp.append(e)
-                d = str(i.split()[0])
-                if d not in temp:
-                    time.append(d)
+        del time[:]
+        del temp[:]
+        result = select("soilTemp", 60)
+        for i in result:
+            temp.append(float(round(i[1], 2)))  # works for the time
+            time.append(str(i[0][11:16]))
+
     elif x == "24h":
         name = "24 HOUR"
         label = "Hours"
-        with open("./readings/stmp24h.embs") as file:
-            del time[:]
-            del temp[:]
-            d = file.readlines()
-            for i in d:
-                e = float(i.split()[1])
-                temp.append(e)
-                d = str(i.split()[0])
-                if d not in temp:
-                    time.append(d)
+        del time[:]
+        del temp[:]
+        result = select("soilTemp", 1440)
+        for i in result:
+            temp.append(float(round(i[1], 2)))  # works for the time
+            time.append(str(i[0][11:16]))
+
     elif x == "1w":
         name = "1 WEEK"
         label = "Days"
-        with open("./readings/stmp1w.embs") as file:
-            del time[:]
-            del temp[:]
-            d = file.readlines()
-            for i in d:
-                e = float(i.split()[1])
-                temp.append(e)
-                # print(temp)
-                d = str(i.split()[0])
-                if d not in temp:
-                    time.append(d)
+        del time[:]
+        del temp[:]
+        result = select("soilTemp", 10080)
+        for i in result:
+            temp.append(float(round(i[1], 2)))  # works for the time
+            time.append(str(i[0][11:16]))
     elif x == "1m":
         name = "1 MONTH"
         label = "Weeks"
-        with open("./reaading2.embs") as file:
-            del time[:]
-            del temp[:]
-            d = file.readlines()
-            for i in d:
-                e = float(i.split()[1])
-                temp.append(e)
-                d = str(i.split()[0])
-                if d not in temp:
-                    time.append(d)
+        del time[:]
+        del temp[:]
+        result = select("soilTemp", 100)
+        for i in result:
+            temp.append(float(round(i[1], 2)))  # works for the time
+            time.append(str(i[0][11:16]))
     elif x == "1y":
         name = "1 YEAR"
         label = "Months"
-        with open("./reaading2.embs") as file:
-            del time[:]
-            del temp[:]
-            d = file.readlines()
-            for i in d:
-                e = float(i.split()[1])
-                temp.append(e)
-                d = str(i.split()[0])
-                if d not in temp:
-                    time.append(d)
+        del time[:]
+        del temp[:]
+        result = select("soilTemp", 200)
+        for i in result:
+            temp.append(float(round(i[1], 2)))  # works for the time
+            time.append(str(i[0][11:16]))
     return render_template(
         "soil_temp.html", temp=temp, time=str(time), name=name, label=label
-    )
-
-
-@app.route("/soilmoist/<x>")
-def soilmoist(x):
-    if x == "1h":
-        with open("./reaading2.embs") as file:
-            del time[:]
-            del temp[:]
-            d = file.readlines()
-            for i in d:
-                e = float(i.split()[1])
-                temp.append(e)
-                d = str(i.split()[0])
-                if d not in temp:
-                    time.append(d)
-    elif x == "24h":
-        with open("./reading.embs") as file:
-            del time[:]
-            del temp[:]
-            d = file.readlines()
-            for i in d:
-                e = float(i.split()[1])
-                temp.append(e)
-                d = str(i.split()[0])
-                if d not in temp:
-                    time.append(d)
-    elif x == "1w":
-        with open("./reaading2.embs") as file:
-            del time[:]
-            del temp[:]
-            d = file.readlines()
-            for i in d:
-                e = float(i.split()[1])
-                temp.append(e)
-                d = str(i.split()[0])
-                if d not in temp:
-                    time.append(d)
-    elif x == "1m":
-        with open("./reaading2.embs") as file:
-            del time[:]
-            del temp[:]
-            d = file.readlines()
-            for i in d:
-                e = float(i.split()[1])
-                temp.append(e)
-                d = str(i.split()[0])
-                if d not in temp:
-                    time.append(d)
-    elif x == "1y":
-        with open("./reaading2.embs") as file:
-            del time[:]
-            del temp[:]
-            d = file.readlines()
-            for i in d:
-                e = float(i.split()[1])
-                moist.append(e)
-                d = str(i.split()[0])
-                if d not in temp:
-                    time.append(d)
-    return render_template(
-        "soil_moist.html", moist=moist, time=str(time), name=name, label=label
     )
 
 
 @app.route("/humidity/<x>")
 def humid(x):
     if x == "1h":
-        name = "1 Hour"
+        name = "1 HOUR"
         label = "Minutes"
-        with open("./readings/humidity1h.embs") as file:
-            del time[:]
-            del temp[:]
-            d = file.readlines()
-            for i in d:
-                e = float(i.split()[1])
-                humidity.append(e)
-                d = str(i.split()[0])
-                if d not in temp:
-                    time.append(d)
+        # with open("./readings/humidity1h.embs") as file:
+        # d = file.readlines()
+        # del time[:]
+        # del temp[:]
+        del time[:]
+        del humidity[:]
+        result = select("humidity", 60)
+        for i in result:
+            humidity.append(float(round(i[1], 2)))  # works for the time
+            time.append(str(i[0][11:16]))
     elif x == "24h":
-        name = "24 Hour"
+        name = "24 HOUR"
         label = "Hours"
+        del time[:]
+        del humidity[:]
+        result = select("humidity", 1440)
+        for i in result:
+            humidity.append(float(round(i[1], 2)))  # works for the time
+            time.append(str(i[0][11:16]))
 
-        with open("./readings/humidity24h.embs") as file:
-            del time[:]
-            del temp[:]
-            d = file.readlines()
-            for i in d:
-                e = float(i.split()[1])
-                humidity.append(e)
-                d = str(i.split()[0])
-                if d not in temp:
-                    time.append(d)
     elif x == "1w":
-        name = "1 Week"
+        name = "1 WEEK"
         label = "Days"
-        with open("./readings/humidity1w.embs") as file:
-            del time[:]
-            del temp[:]
-            d = file.readlines()
-            for i in d:
-                e = float(i.split()[1])
-                humidity.append(e)
-                d = str(i.split()[0])
-                if d not in temp:
-                    time.append(d)
+        del time[:]
+        del humidity[:]
+        result = select("humidity", 10080)
+        for i in result:
+            humidity.append(float(round(i[1], 2)))  # works for the time
+            time.append(str(i[0][0:4]))
     elif x == "1m":
-        name = "1 Month"
+        name = "1 MONTH"
         label = "Weeks"
-        with open("./reaading2.embs") as file:
-            del time[:]
-            del temp[:]
-            d = file.readlines()
-            for i in d:
-                e = float(i.split()[1])
-                humidity.append(e)
-                d = str(i.split()[0])
-                if d not in temp:
-                    time.append(d)
+        del time[:]
+        del humidity[:]
+        result = select("humidity", 4)
+        for i in result:
+            humidity.append(float(round(i[1], 2)))  # works for the time
+            time.append(str(i[0][11:16]))
     elif x == "1y":
-        name = "1 Year"
+        name = "1 YEAR"
         label = "Months"
-        with open("./reaading2.embs") as file:
-            del time[:]
-            del temp[:]
-            d = file.readlines()
-            for i in d:
-                e = float(i.split()[1])
-                humidity.append(e)
-                d = str(i.split()[0])
-                if d not in temp:
-                    time.append(d)
+        del time[:]
+        del humidity[:]
+        result = select("humidity", 10)
+        for i in result:
+            humidity.append(float(round(i[1], 2)))  # works for the time
+            time.append(str(i[0][11:16]))
     return render_template(
         "humidity.html", humidity=humidity, time=str(time), name=name, label=label
     )
 
 
-@app.route("/download/<parameter>")
-def download(parameter):
-    # First i need to prepare the file
-    generate(parameter)
-
-    # I need to downloaded the file
-    with open("./data/%s_data.csv" % parameter, "r") as f:
-        returnedfile = f.read().encode("latin-1")
-    f.close()
-    return Response(
-        returnedfile,
-        mimetype="text/csv",
-        headers={"Content-disposition": "attachment; filename=%s_data.csv" % parameter},
+@app.route("/ph/<x>")
+def ph(x):
+    name = "this is the ph"
+    label = "Yao Mings job"
+    time = "It is time"
+    ph = "12"
+    return render_template(
+        "soil_ph.html", ph=ph, time=str(time), name=name, label=label
     )
+
+
+@app.route("/analyse")
+def analysis():
+    return """<h2>Analysis is coming. You get to know the ideal time to plant, the ideal time to water your plants and the idea</h2>"""
+
+
+@app.route("/settings", methods=['GET', 'POST'])
+def settings():
+    # return """<h2>Settings is coming soon. You get to set the threshold of sensors for an alert</h2>"""
+    return render_settings()
+
+
+@app.route("/download/<table_name>")
+@app.route("/download/<table_name>/<limit>")
+def download(table_name, **limit):
+    if limit:
+        if limit["limit"] == "1 HOUR":
+            generate(table_name, 60)
+            with open("./data/%s_1hour_data.csv" % table_name, "r") as file:
+                returnfile = file.read().encode("latin-1")
+            file.close()
+            return Response(
+                returnfile,
+                mimetype="text/csv",
+                headers={
+                    "Content-disposition": "attachment; filename=%s_1hour_data.csv"
+                    % table_name
+                },
+            )
+        elif limit["limit"] == "24 HOUR":
+            generate(table_name, 1440)
+            with open("./data/%s_1day_data.csv" % table_name, "r") as file:
+                returnfile = file.read().encode("latin-1")
+            file.close()
+            return Response(
+                returnfile,
+                mimetype="text/csv",
+                headers={
+                    "Content-disposition": "attachment; filename=%s_1day_data.csv"
+                    % table_name
+                },
+            )
+        elif limit["limit"] == "1 WEEK":
+            generate(table_name, 10080)
+            with open("./data/%s_1week_data.csv" % table_name, "r") as file:
+                returnfile = file.read().encode("latin-1")
+            file.close()
+            return Response(
+                returnfile,
+                mimetype="text/csv",
+                headers={
+                    "Content-disposition": "attachment; filename=%s_1week_data.csv"
+                    % table_name
+                },
+            )
+        elif limit["limit"] == "1 MONTH":
+            generate(table_name, 1441)
+            with open("./data/%s_1month_data.csv" % table_name, "r") as file:
+                returnfile = file.read().encode("latin-1")
+            file.close()
+            return Response(
+                returnfile,
+                mimetype="text/csv",
+                headers={
+                    "Content-disposition": "attachment; filename=%s_1month_data.csv"
+                    % table_name
+                },
+            )
+        elif limit["limit"] == "1 YEAR":
+            generate(table_name, 5)
+            with open("./data/%s_1year_data.csv" % table_name, "r") as file:
+                returnfile = file.read().encode("latin-1")
+            file.close()
+            return Response(
+                returnfile,
+                mimetype="text/csv",
+                headers={
+                    "Content-disposition": "attachment; filename=%s_1year_data.csv"
+                    % table_name
+                },
+            )
+    else:
+        generate(table_name)
+        with open("./data/all_%s_data.csv" % table_name, "r") as f:
+            returnedfile = f.read().encode("latin-1")
+        f.close()
+        return Response(
+            returnedfile,
+            mimetype="text/csv",
+            headers={
+                "Content-disposition": "attachment; filename=%s_all_data.csv"
+                % table_name
+            },
+        )
 
 
 if __name__ == "__main__":
