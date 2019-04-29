@@ -3,7 +3,7 @@ import csv
 from generator import generate
 from selection import select
 from landingpage import read
-from views.settings import render_settings
+#from views.settings import render_settings
 import sqlite3 as sql
 
 
@@ -19,6 +19,7 @@ def index():
         humidity=float(round(results[1][0], 2)),
         moisture=float(round(results[2][0], 2)),
         soiltemp=float(round(results[3][0], 2)),
+        #ph = float(round(results[4][0], 2))
     )
 
 
@@ -83,6 +84,63 @@ def atmtemp(x):
     return render_template(
         "atm_temp.html", temp=temp, time=str(time), name=name, label=label
     )
+
+@app.route("/ph/<x>")
+def ph(x):
+    if x == "1h":
+        name = "1 HOUR"
+        label = "Minutes"
+        del time[:]
+        del temp[:]
+        result = select("atmosphericTemp", 60)
+        for i in result:
+            temp.append(float(round(i[1], 2)))  # works for the time
+            time.append(str(i[0][11:16]))
+
+    elif x == "24h":
+        name = "24 HOUR"
+        label = "Hours"
+        del time[:]
+        del temp[:]
+        result = select("atmosphericTemp", 1440)
+        for i in result:
+            temp.append(float(round(i[1], 2)))  # works for the time
+            time.append(str(i[0][11:16]))
+
+    elif x == "1w":
+        name = "1 WEEK"
+        label = "Days"
+        del time[:]
+        del temp[:]
+        result = select("atmosphericTemp", 10080)
+        for i in result:
+            temp.append(float(round(i[1], 2)))
+            time.append(str(i[0][11:16]))
+
+    elif x == "1m":
+        name = "1 MONTH"
+        label = "Weeks"
+        del time[:]
+        del temp[:]
+        result = select("atmosphericTemp", 10)  # please take a look at this one
+        for i in result:
+            temp.append(float(round(i[1], 2)))
+            time.append(str(i[0][11:16]))
+
+    elif x == "1y":
+        name = "1 YEAR"
+        label = "Months"
+        del time[:]
+        del temp[:]
+        result = select("atmosphericTemp", 15)  # please take a look at this one
+        for i in result:
+            temp.append(float(round(i[1], 2)))
+            time.append(str(i[0][11:16]))
+
+    return render_template(
+        "soil_ph.html", temp=temp, time=str(time), name=name, label=label
+    )
+
 
 
 @app.route("/soilmoist/<x>")
@@ -253,15 +311,15 @@ def humid(x):
     )
 
 
-@app.route("/ph/<x>")
-def ph(x):
-    name = "this is the ph"
-    label = "Yao Mings job"
-    time = "It is time"
-    ph = "12"
-    return render_template(
-        "soil_ph.html", ph=ph, time=str(time), name=name, label=label
-    )
+#@app.route("/ph/<x>")
+#def ph(x):
+#    name = "this is the ph"
+#    label = "Yao Mings job"
+ #   time = "It is time"
+#    ph = "12"
+#    return render_template(
+#        "soil_ph.html", ph=ph, time=str(time), name=name, label=label
+#    )
 
 
 @app.route("/analyse")
@@ -269,10 +327,10 @@ def analysis():
     return """<h2>Analysis is coming. You get to know the ideal time to plant, the ideal time to water your plants and the idea</h2>"""
 
 
-@app.route("/settings", methods=['GET', 'POST'])
-def settings():
+#@app.route("/settings", methods=['GET', 'POST'])
+#def settings():
     # return """<h2>Settings is coming soon. You get to set the threshold of sensors for an alert</h2>"""
-    return render_settings()
+    #return render_settings()
 
 
 @app.route("/download/<table_name>")
@@ -360,5 +418,5 @@ def download(table_name, **limit):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8000)
+    app.run(debug=True, port=8000, host='10.10.64.13')
 
