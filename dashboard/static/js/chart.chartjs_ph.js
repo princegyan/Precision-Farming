@@ -7,10 +7,10 @@ $(function(){
     data: {
       labels: time,
       datasets: [{
-        data: s_moist,
-        borderColor: '#017afd',
+        data: ph,
+        borderColor: '#40E0D0',
         label: '# Votes ',
-        backgroundColor: '#e8f6f9'
+        backgroundColor: '#f4FFFF'
 
       }]
     },
@@ -26,12 +26,16 @@ $(function(){
           ticks: {
             beginAtZero:true,
             fontSize: 10,
-            max: 80
+	    steps: 0.5,            
+	    max: 14
           }, gridLines:{
             display:false}
         }],
         xAxes: [{
           ticks: {
+	    callback: function(item, index){
+	    	return index % 10== 0 ? item : null;
+		},
             beginAtZero:true,
             fontSize: 11
           }, gridLines:{

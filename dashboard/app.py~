@@ -19,7 +19,7 @@ def index():
         humidity=float(round(results[1][0], 2)),
         moisture=float(round(results[2][0], 2)),
         soiltemp=float(round(results[3][0], 2)),
-        #ph = float(round(results[4][0], 2))
+        ph = float(round(results[4][0], 2))
     )
 
 
@@ -92,7 +92,7 @@ def ph(x):
         label = "Minutes"
         del time[:]
         del temp[:]
-        result = select("atmosphericTemp", 60)
+        result = select("soilpH", 60)
         for i in result:
             temp.append(float(round(i[1], 2)))  # works for the time
             time.append(str(i[0][11:16]))
@@ -102,7 +102,7 @@ def ph(x):
         label = "Hours"
         del time[:]
         del temp[:]
-        result = select("atmosphericTemp", 1440)
+        result = select("soilpH", 1440)
         for i in result:
             temp.append(float(round(i[1], 2)))  # works for the time
             time.append(str(i[0][11:16]))
@@ -112,7 +112,7 @@ def ph(x):
         label = "Days"
         del time[:]
         del temp[:]
-        result = select("atmosphericTemp", 10080)
+        result = select("soilpH", 10080)
         for i in result:
             temp.append(float(round(i[1], 2)))
             time.append(str(i[0][11:16]))
@@ -122,7 +122,7 @@ def ph(x):
         label = "Weeks"
         del time[:]
         del temp[:]
-        result = select("atmosphericTemp", 10)  # please take a look at this one
+        result = select("soilpH", 10)  # please take a look at this one
         for i in result:
             temp.append(float(round(i[1], 2)))
             time.append(str(i[0][11:16]))
@@ -132,13 +132,13 @@ def ph(x):
         label = "Months"
         del time[:]
         del temp[:]
-        result = select("atmosphericTemp", 15)  # please take a look at this one
+        result = select("soilpH", 15)  # please take a look at this one
         for i in result:
             temp.append(float(round(i[1], 2)))
             time.append(str(i[0][11:16]))
 
     return render_template(
-        "soil_ph.html", temp=temp, time=str(time), name=name, label=label
+        "soil_ph.html", ph=ph, time=str(time), name=name, label=label
     )
 
 

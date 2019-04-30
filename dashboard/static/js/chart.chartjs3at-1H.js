@@ -41,7 +41,7 @@ $(function(){
           ticks: {
 
 	    callback: function(item, index){
-	    	return index % 15 == 0 ? item : null;
+	    	return index % 10 == 0 ? item : null;
 		},
             beginAtZero:true,
             fontSize: 11
