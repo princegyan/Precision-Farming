@@ -18,6 +18,8 @@ def loop():
 		ADC.write(ADC.read(0))
 		value = ((0.641025641)*reading)
 		moistureLevel = (100 - value)*2
+                if moistureLevel > 100:
+                        moistureLevel = 100
 		#print (value)
                 print('Soil Moisture is %f%%'%(moistureLevel))
                 localtime = time.asctime( time.localtime(time.time()) )
@@ -27,7 +29,7 @@ def loop():
 #                f.write(str(localtime)+ '\t')
 #                f.write(str(moistureLevel)+'\n')
 #                f.close()        
- 		time.sleep(60)
+ 		time.sleep(1)
                
 
 def destroy():
